@@ -8,3 +8,7 @@ set guioptions-=T  "remove toolbar
 set guioptions-=r  "remove right-hand scroll bar
 
 set mousemodel=popup
+
+" close to 80, leave some buffer for line numbers, etc
+set columns=85
+set lines=24
