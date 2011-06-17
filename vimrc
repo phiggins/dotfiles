@@ -2,4 +2,7 @@ set nu
 set expandtab
 colorscheme evening
 
-autocmd FileType * set tabstop=2 softtabstop=2 shiftwidth=2 
+set tabstop=2
+set softtabstop=2
+set shiftwidth=2
+set autoindent
