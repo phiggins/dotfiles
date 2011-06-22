@@ -1,5 +1,5 @@
 if has("gui_gtk2")
-    set guifont=Bitstream\ Vera\ Sans\ Mono\ 10
+  set guifont=Bitstream\ Vera\ Sans\ Mono\ 9
 endif 
 
 " http://vim.wikia.com/wiki/Hide_toolbar_or_menus_to_see_more_text
