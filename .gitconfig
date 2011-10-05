@@ -1,0 +1,6 @@
+[user]
+	name = Pete Higgins
+	email = pete@peterhiggins.org
+[github]
+	user = phiggins
+	token = !sh -c 'cat .githubtoken'
