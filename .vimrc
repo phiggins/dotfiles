@@ -39,3 +39,7 @@ call pathogen#runtime_append_all_bundles()
 let mapleader=","
 
 filetype plugin indent on
+
+set nobackup
+set nowritebackup
+set noswapfile
