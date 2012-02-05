@@ -14,4 +14,9 @@ if [[ $- != *i* ]] ; then
 	return
 fi
 
+export HISTSIZE=100000
+export HISTCONTROL=ignoredups:erasedups
+
+export BUNDLER_EDITOR=gvim
+
 [[ -s "$HOME/.rvm/scripts/rvm" ]] && source "$HOME/.rvm/scripts/rvm" # Load RVM into a shell session *as a function*
