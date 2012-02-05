@@ -38,6 +38,8 @@ call pathogen#runtime_append_all_bundles()
 
 let mapleader=","
 
+let g:ctrlp_map = '<leader>t'
+
 filetype plugin indent on
 
 set nobackup
