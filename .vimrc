@@ -38,7 +38,9 @@ call pathogen#runtime_append_all_bundles()
 
 let mapleader=","
 
+" ctrlp stuff
 let g:ctrlp_map = '<leader>t'
+let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn\|tmp$'
 
 filetype plugin indent on
 
