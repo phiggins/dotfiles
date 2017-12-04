@@ -32,6 +32,7 @@ map <C-l> <C-w>l
 
 let mapleader=","
 
+" http://ctrlpvim.github.io/ctrlp.vim/#installation
 set runtimepath^=~/.vim/bundle/ctrlp.vim
 let g:ctrlp_map = '<leader>f'
 let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files -oc --exclude-standard']
