@@ -3,7 +3,7 @@ set nocompatible
 
 set nu
 set expandtab
-colorscheme evening
+" colorscheme evening
 
 set hidden
 set tabstop=2
@@ -17,15 +17,12 @@ set title
 set visualbell
 set noerrorbells
 
+" Fix backspace on mac
+set backspace=indent,eol,start
+
 " Show otherwise hidden whitespace
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
-
-" Nightmare mode
-"map <up> <nop>
-"map <down> <nop>
-"map <left> <nop>
-"map <right> <nop>
 
 " Easy window navigation
 map <C-h> <C-w>h
@@ -33,17 +30,19 @@ map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-call pathogen#helptags()
-call pathogen#runtime_append_all_bundles()
-
 let mapleader=","
 
-" ctrlp stuff
-let g:ctrlp_map = '<leader>t'
-let g:ctrlp_custom_ignore = '\.git$\|\.hg$\|\.svn\|tmp$'
+set runtimepath^=~/.vim/bundle/ctrlp.vim
+let g:ctrlp_map = '<leader>f'
+let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files -oc --exclude-standard']
+let g:ctrlp_working_path_mode = ''
+let g:ctrlp_max_files=0
 
 filetype plugin indent on
+syntax on
 
 set nobackup
 set nowritebackup
 set noswapfile
+
+autocmd FileType erlang setlocal shiftwidth=4 tabstop=4
