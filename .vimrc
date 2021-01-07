@@ -3,7 +3,6 @@ set nocompatible
 
 set nu
 set expandtab
-" colorscheme evening
 
 set hidden
 set tabstop=2
@@ -32,18 +31,49 @@ map <C-l> <C-w>l
 
 let mapleader=","
 
-" http://ctrlpvim.github.io/ctrlp.vim/#installation
-set runtimepath^=~/.vim/bundle/ctrlp.vim
-let g:ctrlp_map = '<leader>f'
-let g:ctrlp_user_command = ['.git/', 'cd %s && git ls-files -oc --exclude-standard']
-let g:ctrlp_working_path_mode = ''
-let g:ctrlp_max_files=0
+call plug#begin('~/.vim/plugged')
+Plug 'vim-ruby/vim-ruby'
+call plug#end()
 
-filetype plugin indent on
-syntax on
+" vim-ruby setup
+"
+" Do this:
+"   first
+"     .second do |x|
+"       something
+"     end
+" Not this:
+"   first
+"     .second do |x|
+"     something
+"   end
+:let g:ruby_indent_block_style = 'do'
+" Do this:
+"     x = if condition
+"       something
+"     end
+" Not this:
+"     x = if condition
+"           something
+"         end
+:let g:ruby_indent_assignment_style = 'variable'
 
 set nobackup
 set nowritebackup
 set noswapfile
 
-autocmd FileType erlang setlocal shiftwidth=4 tabstop=4
+" apt get install fzy
+" https://github.com/jhawthorn/fzy
+function! FzyCommand(choice_command, vim_command)
+  try
+    let output = system(a:choice_command . " | fzy ")
+  catch /Vim:Interrupt/
+    " Swallow errors from ^C, allow redraw! below
+  endtry
+  redraw!
+  if v:shell_error == 0 && !empty(output)
+    exec a:vim_command . ' ' . output
+  endif
+endfunction
+
+nnoremap <leader>f :call FzyCommand("find . -type f", ":e")<cr>
