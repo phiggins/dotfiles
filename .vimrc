@@ -77,3 +77,4 @@ function! FzyCommand(choice_command, vim_command)
 endfunction
 
 nnoremap <leader>f :call FzyCommand("find . -type f", ":e")<cr>
+nnoremap <leader>v :call FzyCommand("find . -type f", ":vs")<cr>
