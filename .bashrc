@@ -38,6 +38,6 @@ elif [ -f /etc/bash_completion ]; then
   . /etc/bash_completion
 fi
 
-source "$HOME/.cargo/env"
-. $HOME/.asdf/asdf.sh
-. $HOME/.asdf/completions/asdf.bash
+[ -r $HOME/.cargo/env ] && source "$HOME/.cargo/env"
+[ -r $HOME/.asdf/asdf.sh ] && source $HOME/.asdf/asdf.sh
+[ -r $HOME/.asdf/completions/asdf.bash ] && source $HOME/.asdf/completions/asdf.bash
