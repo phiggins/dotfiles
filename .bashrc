@@ -4,6 +4,8 @@ case $- in
       *) return;;
 esac
 
+[ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local
+
 # https://twitter.com/tpope/status/165631968996900865
 PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
 
