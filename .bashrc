@@ -6,6 +6,13 @@ esac
 
 [ -r $HOME/.bashrc.local ] && source $HOME/.bashrc.local
 
+platform=$(uname | tr '[:upper:]' '[:lower:]')
+if [ -r "$HOME/.bashrc.$platform" ] ; then
+  source "$HOME/.bashrc.$platform"
+else
+  echo "platform '$platform' not recognized from: $(uname -a)"
+fi
+
 # https://twitter.com/tpope/status/165631968996900865
 PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
 
