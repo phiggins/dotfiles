@@ -1,0 +1,9 @@
+# TODO: macos ls doesn't have --color=auto, figure out a way to move this to .bashrc
+alias ls='ls --color=auto'
+alias grep='grep --color=auto'
+
+if [ -f /usr/share/bash-completion/bash_completion ]; then
+  . /usr/share/bash-completion/bash_completion
+elif [ -f /etc/bash_completion ]; then
+  . /etc/bash_completion
+fi
