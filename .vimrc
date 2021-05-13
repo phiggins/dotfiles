@@ -44,6 +44,8 @@ autocmd VimEnter * if len(filter(values(g:plugs), '!isdirectory(v:val.dir)'))
 
 call plug#begin('~/.vim/plugged')
 Plug 'vim-ruby/vim-ruby'
+Plug 'MaxMEllon/vim-jsx-pretty'
+Plug 'leafgarland/typescript-vim'
 call plug#end()
 
 " vim-ruby setup
@@ -91,3 +93,13 @@ endfunction
 let file_list_command = "if git status --porcelain >/dev/null 2>&1 ; then git ls-files -cmo --exclude-standard ; else find . -type f ; fi"
 nnoremap <leader>f :call FzyCommand(file_list_command, ":e")<cr>
 nnoremap <leader>v :call FzyCommand(file_list_command, ":vs")<cr>
+
+" Compute syntax highlighting from beginning of file. (By default, vim only
+" looks 200 lines back, which can make it highlight code incorrectly in some
+" long files.)
+autocmd BufEnter * :syntax sync fromstart
+
+" Vim 8.2 adds built-in JSX support which seems broken. Setting these
+" filetypes lets the installed plugins deal with JSX/TSX instead.
+autocmd bufnewfile,bufread *.tsx set filetype=typescript.tsx
+autocmd bufnewfile,bufread *.jsx set filetype=javascript.jsx
