@@ -40,6 +40,10 @@ map <C-l> <C-w>l
 " These are different in a subtle way that I do not want.
 inoremap <c-c> <esc>
 
+nnoremap <c-]> :ALEGoToDefinition<cr>
+nnoremap <leader>d :ALEGoToDefinition<cr>
+nnoremap <leader>D :ALEGotoTypeDefinition<cr>
+
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
   silent !curl -fLo ~/.vim/autoload/plug.vim --create-dirs
@@ -55,8 +59,10 @@ call plug#begin('~/.vim/plugged')
 Plug 'vim-ruby/vim-ruby'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
+Plug 'dense-analysis/ale'
 call plug#end()
 
+"
 " vim-ruby setup
 "
 " Do this:
@@ -108,3 +114,18 @@ autocmd BufEnter * :syntax sync fromstart
 " filetypes lets the installed plugins deal with JSX/TSX instead.
 autocmd bufnewfile,bufread *.tsx set filetype=typescript.tsx
 autocmd bufnewfile,bufread *.jsx set filetype=javascript.jsx
+
+"
+" ALE config
+"
+let g:ale_linters = {'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint']}
+let g:ale_fixers = {'typescript': ['eslint'], 'typescript.tsx': ['eslint'], '*': ['remove_trailing_lines', 'trim_whitespace']}
+
+let g:ale_javascript_eslint_executable = "./.yarn/sdks/eslint/bin/eslint.js"
+let g:ale_fix_on_save = 1
+let g:ale_lint_on_text_changed = 'normal'
+let g:ale_lint_delay = 0
+
+nnoremap gj :ALENextWrap<cr>
+nnoremap gk :ALEPreviousWrap<cr>
+nnoremap g1 :ALEFirst<cr>
