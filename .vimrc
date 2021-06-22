@@ -15,6 +15,9 @@ set hlsearch
 set title
 set visualbell
 set noerrorbells
+set nobackup
+set nowritebackup
+set noswapfile
 
 " Fix backspace on mac
 set backspace=indent,eol,start
@@ -23,13 +26,19 @@ set backspace=indent,eol,start
 set list
 set listchars=tab:>.,trail:.,extends:#,nbsp:.
 
+" If a file is changed outside of vim, automatically reload it without asking
+set autoread
+
+let mapleader=","
+
 " Easy window navigation
 map <C-h> <C-w>h
 map <C-j> <C-w>j
 map <C-k> <C-w>k
 map <C-l> <C-w>l
 
-let mapleader=","
+" These are different in a subtle way that I do not want.
+inoremap <c-c> <esc>
 
 " Install vim-plug if not found
 if empty(glob('~/.vim/autoload/plug.vim'))
@@ -70,10 +79,6 @@ call plug#end()
 "           something
 "         end
 :let g:ruby_indent_assignment_style = 'variable'
-
-set nobackup
-set nowritebackup
-set noswapfile
 
 " apt get install fzy
 " https://github.com/jhawthorn/fzy
