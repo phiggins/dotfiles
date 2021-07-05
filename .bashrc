@@ -16,6 +16,8 @@ fi
 # https://twitter.com/tpope/status/165631968996900865
 PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
 
+PATH="~/bin:~/.bin:$PATH"
+
 export EDITOR=vi
 export HISTCONTROL=ignoreboth:erasedups
 
