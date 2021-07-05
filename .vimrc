@@ -95,7 +95,7 @@ function! FzyCommand(choice_command, vim_command)
 endfunction
 
 " list files with git if we're in a git project, find otherwise
-let file_list_command = "if git status --porcelain >/dev/null 2>&1 ; then git ls-files -cmo --exclude-standard ; else find . -type f ; fi"
+let file_list_command = "if git status --porcelain >/dev/null 2>&1 ; then git ls-files -co --exclude-standard ; else find . -type f ; fi"
 nnoremap <leader>f :call FzyCommand(file_list_command, ":e")<cr>
 nnoremap <leader>v :call FzyCommand(file_list_command, ":vs")<cr>
 
