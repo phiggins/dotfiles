@@ -124,7 +124,6 @@ let g:ale_fixers = {'typescript': ['eslint'], 'typescript.tsx': ['eslint'], '*':
 let g:ale_javascript_eslint_executable = "./.yarn/sdks/eslint/bin/eslint.js"
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'normal'
-let g:ale_lint_delay = 0
 
 nnoremap gj :ALENextWrap<cr>
 nnoremap gk :ALEPreviousWrap<cr>
