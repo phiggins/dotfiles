@@ -13,6 +13,10 @@ else
   echo "platform '$platform' not recognized from: $(uname -a)"
 fi
 
+if ! fzy -v 2>&1 >/dev/null; then
+  echo "'fzy' not found, run 'apt install fzy' or 'brew install fzy'"
+fi
+
 # https://twitter.com/tpope/status/165631968996900865
 PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
 
