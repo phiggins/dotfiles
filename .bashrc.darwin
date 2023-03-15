@@ -2,6 +2,5 @@ export BASH_SILENCE_DEPRECATION_WARNING=1
 
 # TODO: macos ls doesn't have --color=auto, figure out a way to move this to .bashrc
 alias ls='gls --color=auto'
-alias grep='ggrep --color=auto'
 
 [[ -r "/usr/local/etc/profile.d/bash_completion.sh" ]] && . "/usr/local/etc/profile.d/bash_completion.sh"
