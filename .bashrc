@@ -13,6 +13,21 @@ else
   echo "platform '$platform' not recognized from: $(uname -a)"
 fi
 
+# TODO https://unix.stackexchange.com/questions/351215/if-then-else-inside-bash-alias
+grep_command=$(if [ $platform = 'darwin' ] ; then echo 'ggrep' ; else echo 'grep' ; fi)
+function maybe_git_grep() {
+  if git status --porcelain >/dev/null 2>&1 ; then
+    git grep "$@"
+  else
+    "$grep_command" "$@"
+  fi
+}
+alias grep=maybe_git_grep
+
+if ! fzy -v 2>&1 >/dev/null; then
+  echo "'fzy' not found, run 'apt install fzy' or 'brew install fzy'"
+fi
+
 # https://twitter.com/tpope/status/165631968996900865
 PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
 
@@ -25,8 +40,8 @@ export HISTCONTROL=ignoreboth:erasedups
 shopt -s histappend
 
 # for setting history length see HISTSIZE and HISTFILESIZE in bash(1)
-HISTSIZE=100000
-HISTFILESIZE=100000
+export HISTSIZE=100000
+export HISTFILESIZE=100000
 
 # check the window size after each command and, if necessary,
 # update the values of LINES and COLUMNS.
