@@ -13,25 +13,11 @@ else
   echo "platform '$platform' not recognized from: $(uname -a)"
 fi
 
-# TODO https://unix.stackexchange.com/questions/351215/if-then-else-inside-bash-alias
-grep_command=$(if [ $platform = 'darwin' ] ; then echo 'ggrep' ; else echo 'grep' ; fi)
-function maybe_git_grep() {
-  if git status --porcelain >/dev/null 2>&1 ; then
-    git grep "$@"
-  else
-    "$grep_command" "$@"
-  fi
-}
-alias grep=maybe_git_grep
-
 if ! fzy -v 2>&1 >/dev/null; then
   echo "'fzy' not found, run 'apt install fzy' or 'brew install fzy'"
 fi
 
-# https://twitter.com/tpope/status/165631968996900865
-PATH=".git/safe/../../bin:.git/safe/../../.bin:$PATH"
-
-PATH="~/bin:~/.bin:$PATH"
+export PATH="$HOME/bin:$HOME/.bin:$HOME/.local/bin:$PATH"
 
 export EDITOR=vi
 export HISTCONTROL=ignoreboth:erasedups
