@@ -60,6 +60,7 @@ Plug 'vim-ruby/vim-ruby'
 Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 Plug 'dense-analysis/ale'
+Plug 'sainnhe/gruvbox-material'
 call plug#end()
 
 "
@@ -118,13 +119,35 @@ autocmd bufnewfile,bufread *.jsx set filetype=javascript.jsx
 "
 " ALE config
 "
-let g:ale_linters = {'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint']}
-let g:ale_fixers = {'typescript': ['eslint'], 'typescript.tsx': ['eslint'], '*': ['remove_trailing_lines', 'trim_whitespace']}
+let g:ale_linters = {'javascript': ['eslint'], 'typescript': ['tsserver', 'eslint'], 'typescript.tsx': ['tsserver', 'eslint']}
+let g:ale_fixers = {'javascript': ['eslint', 'prettier'], 'typescript': ['eslint', 'prettier'], 'typescript.tsx': ['eslint', 'prettier'], '*': ['remove_trailing_lines', 'trim_whitespace']}
 
-let g:ale_javascript_eslint_executable = "./.yarn/sdks/eslint/bin/eslint.js"
 let g:ale_fix_on_save = 1
 let g:ale_lint_on_text_changed = 'normal'
 
 nnoremap gj :ALENextWrap<cr>
 nnoremap gk :ALEPreviousWrap<cr>
 nnoremap g1 :ALEFirst<cr>
+
+" Gruvbox start
+" Important!!
+if has('termguicolors')
+  set termguicolors
+endif
+
+" For dark version.
+set background=dark
+
+" For light version.
+"set background=light
+
+" Set contrast.
+" This configuration option should be placed before `colorscheme gruvbox-material`.
+" Available values: 'hard', 'medium'(default), 'soft'
+let g:gruvbox_material_background = 'soft'
+
+" For better performance
+let g:gruvbox_material_better_performance = 1
+
+colorscheme gruvbox-material
+" Gruvbox end
