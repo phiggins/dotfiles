@@ -61,6 +61,7 @@ Plug 'MaxMEllon/vim-jsx-pretty'
 Plug 'leafgarland/typescript-vim'
 Plug 'dense-analysis/ale'
 Plug 'sainnhe/gruvbox-material'
+Plug 'preservim/vim-markdown'
 call plug#end()
 
 "
@@ -151,3 +152,6 @@ let g:gruvbox_material_better_performance = 1
 
 colorscheme gruvbox-material
 " Gruvbox end
+
+" Just highlight the syntax bruh cmon
+:let g:vim_markdown_folding_disabled = 1

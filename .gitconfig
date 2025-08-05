@@ -7,3 +7,6 @@
   trust = "!mkdir -p .git/safe"
 [push]
 	autoSetupRemote = true
+[diff]
+	algorithm = histogram
+	renames = true
